@@ -8,8 +8,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String inputText = '';
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('data')));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(controller: controller),
+            Text(inputText),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+              onPressed: () {
+                setState(() {
+                  inputText = controller.text;
+                });
+              },
+              child: Text('Read from textfield'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
