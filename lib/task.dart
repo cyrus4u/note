@@ -7,5 +7,7 @@ class Task {
   String title;
   @HiveField(1)
   String subTitle;
-  Task({required this.title, required this.subTitle});
+  @HiveField(2)
+  bool isDone;
+  Task({required this.title, required this.subTitle, this.isDone = false});
 }

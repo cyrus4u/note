@@ -27,7 +27,7 @@ class Application extends StatelessWidget {
           headlineMedium: TextStyle(color: CustomColor.white, fontSize: 16),
         ),
       ),
-      home: AddTaskScreen(),
+      home: HomeScreen(),
     );
   }
 }
