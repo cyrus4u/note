@@ -19,96 +19,107 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.grey,
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 12),
-          height: 132,
-          width: double.infinity,
+      body: Center(child: getTaskItem()),
+    );
+  }
+
+  Container getTaskItem() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 12),
+      height: 132,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: CustomColor.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: getMainContent(),
+      ),
+    );
+  }
+
+  Row getMainContent() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MSHCheckbox(
+                    size: 32,
+                    value: isChecked,
+                    colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
+                      checkedColor: CustomColor.green,
+                    ),
+                    style: MSHCheckboxStyle.fillScaleCheck,
+                    onChanged: (selected) {
+                      setState(() {
+                        isChecked = selected;
+                      });
+                    },
+                  ),
+                  Text('ورزش'),
+                ],
+              ),
+              Text('کردن'),
+              Spacer(),
+              getTimeAndEditBadges(),
+            ],
+          ),
+        ),
+        SizedBox(width: 20),
+
+        Image.asset('images/workout.png'),
+      ],
+    );
+  }
+
+  Row getTimeAndEditBadges() {
+    return Row(
+      children: [
+        Container(
+          width: 90,
+          height: 28,
           decoration: BoxDecoration(
-            color: CustomColor.white,
-            borderRadius: BorderRadius.circular(15),
+            color: CustomColor.green,
+            borderRadius: BorderRadius.circular(18),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MSHCheckbox(
-                  size: 32,
-                  value: isChecked,
-                  colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-                    checkedColor: CustomColor.green,
-                  ),
-                  style: MSHCheckboxStyle.fillScaleCheck,
-                  onChanged: (selected) {
-                    setState(() {
-                      isChecked = selected;
-                    });
-                  },
-                ),
-                Spacer(),
-                Column(
-                  children: [
-                    Text('data'),
-                    Text('data'),
-                    Row(
-                      children: [
-                        Container(
-                          width: 90,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: CustomColor.green,
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 6.0,
-                              horizontal: 12,
-                            ),
-                            child: Row(
-                              children: [
-                                Text('10:30'),
-                                SizedBox(width: 10),
-                                Image.asset('images/icon_time.png'),
-                              ],
-                            ),
-                          ),
-                        ),
-                       SizedBox(width: 10,),
-                        Container(
-                          width: 90,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: CustomColor.greenLight,
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 6.0,
-                              horizontal: 12,
-                            ),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'ویرایش',
-                                  style: TextStyle(color: CustomColor.green),
-                                ),
-                                SizedBox(width: 8),
-                                Image.asset('images/icon_edit.png'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Image.asset('images/workout.png'),
+                Text('10:30'),
+                SizedBox(width: 10),
+                Image.asset('images/icon_time.png'),
               ],
             ),
           ),
         ),
-      ),
+        SizedBox(width: 10),
+        Container(
+          width: 90,
+          height: 28,
+          decoration: BoxDecoration(
+            color: CustomColor.greenLight,
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
+            child: Row(
+              children: [
+                Text('ویرایش', style: TextStyle(color: CustomColor.green)),
+                SizedBox(width: 6),
+                Image.asset('images/icon_edit.png'),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
