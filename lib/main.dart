@@ -5,7 +5,8 @@ import 'package:note_application_6/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  var box = await Hive.openBox('names');
+  
+  
   runApp(Application());
 }
 
