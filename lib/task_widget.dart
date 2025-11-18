@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
 import 'package:note_application_6/constants/custom_color.dart';
+import 'package:note_application_6/edit_task_screen.dart';
 import 'package:note_application_6/task.dart';
 
 class TaskWidget extends StatefulWidget {
@@ -99,21 +100,29 @@ class _TaskWidgetState extends State<TaskWidget> {
           ),
         ),
         SizedBox(width: 10),
-        Container(
-          width: 90,
-          height: 28,
-          decoration: BoxDecoration(
-            color: CustomColor.greenLight,
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
-            child: Row(
-              children: [
-                Text('ویرایش', style: TextStyle(color: CustomColor.green)),
-                SizedBox(width: 6),
-                Image.asset('images/icon_edit.png'),
-              ],
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditTaskScreen(task: widget.task,)),
+            );
+          },
+          child: Container(
+            width: 90,
+            height: 28,
+            decoration: BoxDecoration(
+              color: CustomColor.greenLight,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
+              child: Row(
+                children: [
+                  Text('ویرایش', style: TextStyle(color: CustomColor.green)),
+                  SizedBox(width: 6),
+                  Image.asset('images/icon_edit.png'),
+                ],
+              ),
             ),
           ),
         ),
