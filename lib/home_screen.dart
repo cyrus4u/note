@@ -29,21 +29,21 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, value, child) {
             return NotificationListener<UserScrollNotification>(
               onNotification: (notification) {
-               setState(() {
+                setState(() {
                   if (notification.direction == ScrollDirection.forward) {
-                  isFabVisible = true;
-                }
-                if (notification.direction == ScrollDirection.reverse) {
-                  isFabVisible = false;
-                }
-               });
+                    isFabVisible = true;
+                  }
+                  if (notification.direction == ScrollDirection.reverse) {
+                    isFabVisible = false;
+                  }
+                });
                 return true;
               },
               child: ListView.builder(
                 itemCount: taskBox.values.length,
                 itemBuilder: (context, index) {
                   var task = taskBox.values.toList()[index];
-                  return TaskWidget(task: task);
+                  return getListItem(task);
                 },
               ),
             );
@@ -63,6 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Image.asset('images/icon_add.png'),
         ),
       ),
+    );
+  }
+
+  Widget getListItem(Task task) {
+    return Dismissible(
+      key: UniqueKey(),
+      onDismissed: (direction) {
+        task.delete();
+      },
+      child: TaskWidget(task: task),
     );
   }
 }

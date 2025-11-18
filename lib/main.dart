@@ -4,7 +4,6 @@ import 'package:note_application_6/add_task_screen.dart';
 import 'package:note_application_6/constants/custom_color.dart';
 import 'package:note_application_6/home_screen.dart';
 import 'package:note_application_6/task.dart';
-import 'package:note_application_6/test_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
