@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:note_application_6/constants/custom_color.dart';
+import 'package:note_application_6/home_screen.dart';
 import 'package:note_application_6/task.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -122,6 +123,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   String taskTitle = controllerTaskTitle.text;
                   String taskSubTitle = controllerTaskSubTitle.text;
                   addTask(taskTitle, taskSubTitle);
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'اضافه کردن تسک',
