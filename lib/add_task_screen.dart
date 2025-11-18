@@ -17,7 +17,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   FocusNode negahban2 = FocusNode();
   final TextEditingController controllerTaskTitle = TextEditingController();
   final TextEditingController controllerTaskSubTitle = TextEditingController();
-  final TextEditingController controllerTaskSubTitle = TextEditingController();
+  DateTime? _time;
   @override
   void initState() {
     // TODO: implement initState
@@ -141,8 +141,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     positiveButtonText: 'انتخاب زمان',
                     elevation: 2,
                     onPositivePressed: (context, time) {
-                      print(time.hour);
-                      print(time.minute);
+                      _time = time;
                     },
                     onNegativePressed: (context) {},
                   ),
@@ -154,6 +153,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   onPressed: () {
                     String taskTitle = controllerTaskTitle.text;
                     String taskSubTitle = controllerTaskSubTitle.text;
+                    if (_time == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("لطفاً زمان را انتخاب کنید")),
+                      );
+                      return;
+                    }
 
                     addTask(taskTitle, taskSubTitle);
                     Navigator.of(context).pop();
@@ -175,7 +180,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 
   addTask(String taskTitle, String taskSubTitle) {
-    var task = Task(title: taskTitle, subTitle: taskSubTitle,time: );
+    var task = Task(
+      title: taskTitle,
+      subTitle: taskSubTitle,
+      time: _time!,
+    );
     box.add(task);
   }
 }

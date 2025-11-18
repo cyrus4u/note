@@ -92,7 +92,13 @@ class _TaskWidgetState extends State<TaskWidget> {
             padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
             child: Row(
               children: [
-                Text('10:30'),
+                Text(
+                  '${widget.task.time.hour}:${widget.task.time.minute}',
+                  style: TextStyle(
+                    color: CustomColor.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 SizedBox(width: 10),
                 Image.asset('images/icon_time.png'),
               ],
@@ -104,7 +110,9 @@ class _TaskWidgetState extends State<TaskWidget> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditTaskScreen(task: widget.task,)),
+              MaterialPageRoute(
+                builder: (context) => EditTaskScreen(task: widget.task),
+              ),
             );
           },
           child: Container(
@@ -115,7 +123,10 @@ class _TaskWidgetState extends State<TaskWidget> {
               borderRadius: BorderRadius.circular(18),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12),
+              padding: const EdgeInsets.symmetric(
+                vertical: 6.0,
+                horizontal: 12,
+              ),
               child: Row(
                 children: [
                   Text('ویرایش', style: TextStyle(color: CustomColor.green)),
