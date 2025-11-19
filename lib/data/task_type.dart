@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_application_6/type_enum.dart';
+import 'package:note_application_6/data/type_enum.dart';
 part 'task_type.g.dart';
 
 @HiveType(typeId: 2)

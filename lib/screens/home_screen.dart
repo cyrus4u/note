@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_application_6/add_task_screen.dart';
+import 'package:note_application_6/screens/add_task_screen.dart';
 import 'package:note_application_6/constants/custom_color.dart';
-import 'package:note_application_6/task.dart';
-import 'package:note_application_6/task_widget.dart';
+import 'package:note_application_6/data/task.dart';
+import 'package:note_application_6/widgets/task_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

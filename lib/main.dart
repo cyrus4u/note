@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_application_6/add_task_screen.dart';
+import 'package:note_application_6/screens/add_task_screen.dart';
 import 'package:note_application_6/constants/custom_color.dart';
-import 'package:note_application_6/home_screen.dart';
-import 'package:note_application_6/task.dart';
-import 'package:note_application_6/task_type.dart';
-import 'package:note_application_6/type_enum.dart';
+import 'package:note_application_6/screens/home_screen.dart';
+import 'package:note_application_6/data/task.dart';
+import 'package:note_application_6/data/task_type.dart';
+import 'package:note_application_6/data/type_enum.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

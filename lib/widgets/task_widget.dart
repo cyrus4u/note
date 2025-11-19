@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
 import 'package:note_application_6/constants/custom_color.dart';
-import 'package:note_application_6/edit_task_screen.dart';
-import 'package:note_application_6/task.dart';
+import 'package:note_application_6/screens/edit_task_screen.dart';
+import 'package:note_application_6/data/task.dart';
 
 class TaskWidget extends StatefulWidget {
   TaskWidget({super.key, required this.task});
@@ -61,7 +61,18 @@ class _TaskWidgetState extends State<TaskWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Checkbox(value: isBoxChecked, onChanged: (isChecked) {}),
+                  Transform.scale(
+                    scale: 1.4,
+                    child: Checkbox(
+                      value: isBoxChecked,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      checkColor: CustomColor.white,
+                      activeColor: CustomColor.green,
+                      onChanged: (isChecked) {},
+                    ),
+                  ),
                   Text(widget.task.title),
                 ],
               ),
@@ -73,7 +84,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         ),
         SizedBox(width: 20),
 
-        Image.asset('images/workout.png'),
+        Image.asset(widget.task.taskType.image),
       ],
     );
   }
@@ -123,10 +134,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               borderRadius: BorderRadius.circular(18),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 6.0,
-                horizontal: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
                 children: [
                   Text('ویرایش', style: TextStyle(color: CustomColor.green)),
@@ -140,7 +148,8 @@ class _TaskWidgetState extends State<TaskWidget> {
       ],
     );
   }
-    String getMinUnderTen(DateTime time) {
+
+  String getMinUnderTen(DateTime time) {
     if (time.minute < 10) {
       return '0${time.minute}';
     } else {

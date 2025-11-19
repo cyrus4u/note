@@ -3,10 +3,11 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:note_application_6/constants/custom_color.dart';
-import 'package:note_application_6/home_screen.dart';
-import 'package:note_application_6/task.dart';
-import 'package:note_application_6/task_type.dart';
-import 'package:note_application_6/utility.dart';
+import 'package:note_application_6/screens/home_screen.dart';
+import 'package:note_application_6/data/task.dart';
+import 'package:note_application_6/data/task_type.dart';
+import 'package:note_application_6/widgets/task_type_item.dart';
+import 'package:note_application_6/utility/utility.dart';
 import 'package:time_pickerr/time_pickerr.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -217,34 +218,3 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 }
 
-class TaskTypeItemList extends StatelessWidget {
-  TaskTypeItemList({
-    super.key,
-    required this.taskType,
-    required this.index,
-    required this.selectedItemList,
-  });
-  TaskType taskType;
-  int index;
-  int selectedItemList;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: (selectedItemList == index)
-              ? CustomColor.green
-              : Colors.transparent,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      margin: EdgeInsets.all(8),
-      width: 140,
-      child: Column(
-        children: [Image.asset(taskType.image), Text(taskType.title)],
-      ),
-    );
-  }
-}
