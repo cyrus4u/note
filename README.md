@@ -1,16 +1,78 @@
-# note_application_6
+# Note Application
 
-A new Flutter project.
+A simple and fast Flutter application for creating and managing tasks/notes.  
+Users can create, edit, delete, and store their notes locally using Hive for persistent offline storage.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- Add new tasks/notes  
+- Edit existing tasks  
+- Delete tasks  
+- Store all data locally with Hive  
+- Custom checkbox using `msh_checkbox`  
+- Time picker integration using `time_pickerr`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+
+**Framework:**  
+- Flutter
+
+**Local Storage:**  
+- Hive  
+- Hive Flutter  
+- Hive Generator (for model adapters)
+
+**UI Packages:**  
+- msh_checkbox  
+- time_pickerr  
+- cupertino_icons
+
+---
+
+## 📦 Dependencies
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  msh_checkbox: ^2.0.1
+  time_pickerr: ^1.0.6
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^2.0.1
+  build_runner: ^2.5.4
+▶️ How to Run
+
+Clone the repository:
+
+git clone https://github.com/cyrus4u/note.git
+
+
+Install all packages:
+
+flutter pub get
+
+
+Generate Hive type adapters (if needed):
+
+flutter pub run build_runner build
+
+
+Run the app:
+
+flutter run
+📸 Screenshots
+
+Add your screenshots here later when ready.
+👤 Author
+
+GitHub: cyrus4u
