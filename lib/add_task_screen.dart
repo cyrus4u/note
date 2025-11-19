@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:note_application_6/constants/custom_color.dart';
@@ -20,6 +22,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   final TextEditingController controllerTaskTitle = TextEditingController();
   final TextEditingController controllerTaskSubTitle = TextEditingController();
   DateTime? _time;
+  int _selectedTaskTypeItem = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -154,7 +157,18 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     scrollDirection: Axis.horizontal,
                     itemCount: getTaskTypeList().length,
                     itemBuilder: (context, index) {
-                      return TaskTypeItemList(taskType: getTaskTypeList()[index]);
+                      return InkWell(
+                        onTap: () {
+                         setState(() {
+                            _selectedTaskTypeItem = index;
+                         });
+                        },
+                        child: TaskTypeItemList(
+                          taskType: getTaskTypeList()[index],
+                          index: index,
+                          selectedItemList: _selectedTaskTypeItem,
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -198,12 +212,28 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 }
 
 class TaskTypeItemList extends StatelessWidget {
-  TaskTypeItemList({super.key, required this.taskType});
+  TaskTypeItemList({
+    super.key,
+    required this.taskType,
+    required this.index,
+    required this.selectedItemList,
+  });
   TaskType taskType;
+  int index;
+  int selectedItemList;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: (selectedItemList == index)
+              ? CustomColor.green
+              : Colors.transparent,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
       margin: EdgeInsets.all(8),
       width: 140,
       child: Column(
