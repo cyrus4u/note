@@ -4,11 +4,16 @@ import 'package:note_application_6/add_task_screen.dart';
 import 'package:note_application_6/constants/custom_color.dart';
 import 'package:note_application_6/home_screen.dart';
 import 'package:note_application_6/task.dart';
+import 'package:note_application_6/task_type.dart';
+import 'package:note_application_6/type_enum.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
+  Hive.registerAdapter(TaskTypeAdapter());
+  Hive.registerAdapter(TaskTypeEnumAdapter());
+
   await Hive.openBox<Task>('taskBox');
 
   runApp(Application());
