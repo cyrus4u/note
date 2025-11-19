@@ -3,6 +3,8 @@ import 'package:hive/hive.dart';
 import 'package:note_application_6/constants/custom_color.dart';
 import 'package:note_application_6/home_screen.dart';
 import 'package:note_application_6/task.dart';
+import 'package:note_application_6/task_type.dart';
+import 'package:note_application_6/utility.dart';
 import 'package:time_pickerr/time_pickerr.dart';
 
 class EditTaskScreen extends StatefulWidget {
@@ -19,6 +21,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   TextEditingController? controllerTaskTitle;
   TextEditingController? controllerTaskSubTitle;
   DateTime? _time;
+  int _selectedTaskTypeItem = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -149,6 +152,27 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     onNegativePressed: (context) {},
                   ),
                 ),
+                Container(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: getTaskTypeList().length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          setState(() {
+                            _selectedTaskTypeItem = index;
+                          });
+                        },
+                        child: TaskTypeItemList(
+                          taskType: getTaskTypeList()[index],
+                          index: index,
+                          selectedItemList: _selectedTaskTypeItem,
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: CustomColor.green,
@@ -156,6 +180,12 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                   onPressed: () {
                     String taskTitle = controllerTaskTitle!.text;
                     String taskSubTitle = controllerTaskSubTitle!.text;
+                    if (_time == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("لطفاً زمان را انتخاب کنید")),
+                      );
+                      return;
+                    }
                     editTask(taskTitle, taskSubTitle);
                     Navigator.of(context).pop();
                   },
@@ -179,8 +209,40 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     widget.task.title = taskTitle;
     widget.task.subTitle = taskSubTitle;
     widget.task.time = _time!;
+    widget.task.taskType = getTaskTypeList()[_selectedTaskTypeItem];
+    // print("Added: ${widget.task.taskType.title}");
     widget.task.save();
   }
+}
 
+class TaskTypeItemList extends StatelessWidget {
+  TaskTypeItemList({
+    super.key,
+    required this.taskType,
+    required this.index,
+    required this.selectedItemList,
+  });
+  TaskType taskType;
+  int index;
+  int selectedItemList;
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: (selectedItemList == index)
+              ? CustomColor.green
+              : Colors.transparent,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      margin: EdgeInsets.all(8),
+      width: 140,
+      child: Column(
+        children: [Image.asset(taskType.image), Text(taskType.title)],
+      ),
+    );
+  }
 }

@@ -159,9 +159,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                         setState(() {
+                          setState(() {
                             _selectedTaskTypeItem = index;
-                         });
+                          });
                         },
                         child: TaskTypeItemList(
                           taskType: getTaskTypeList()[index],
@@ -206,7 +206,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 
   addTask(String taskTitle, String taskSubTitle) {
-    var task = Task(title: taskTitle, subTitle: taskSubTitle, time: _time!);
+    var task = Task(
+      title: taskTitle,
+      subTitle: taskSubTitle,
+      time: _time!,
+      taskType: getTaskTypeList()[_selectedTaskTypeItem],
+    );
+    // print("Added: ${task.taskType.title}");
     box.add(task);
   }
 }
