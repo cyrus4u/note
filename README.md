@@ -50,33 +50,34 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^2.0.1
   build_runner: ^2.5.4
+```
 
-Also, move your “▶️ How to Run” into its own section with a heading:
-
-```md
 ---
 
 ## ▶️ How to Run
 
-
 Clone the repository:
-
+```sh
 git clone https://github.com/cyrus4u/note.git
-
+```
 
 Install all packages:
-
+```sh
 flutter pub get
-
+```
 
 Generate Hive type adapters (if needed):
-
+```sh
 flutter pub run build_runner build
-
+```
 
 Run the app:
-
+```sh
 flutter run
+```
+
+---
+
 ## 📸 Screenshots
 
 **Add Note Screen**  
@@ -85,14 +86,14 @@ flutter run
 
 **Edit Note Screen**  
 ![Edit Note](images/edit.png)
-![Add Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/edit.png)
+![Edit Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/edit.png)
 
 **Home Page**  
 ![Home Page](images/homePage.png)
-![Add Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/homePage.png)
+![Home Page](https://raw.githubusercontent.com/cyrus4u/note/main/images/homePage.png)
 
-
+---
 
 👤 Author
 
-GitHub: cyrus4u
+GitHub: [cyrus4u](https://github.com/cyrus4u)
