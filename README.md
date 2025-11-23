@@ -72,7 +72,10 @@ Run the app:
 flutter run
 📸 Screenshots
 
-Add your screenshots here later when ready.
+![Home Screen](images/add.png)
+![Home Screen](images/edit.png)
+![Home Screen](images/homePage.png)
+
 👤 Author
 
 GitHub: cyrus4u
