@@ -50,7 +50,14 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^2.0.1
   build_runner: ^2.5.4
-▶️ How to Run
+
+Also, move your “▶️ How to Run” into its own section with a heading:
+
+```md
+---
+
+## ▶️ How to Run
+
 
 Clone the repository:
 
@@ -70,11 +77,17 @@ flutter pub run build_runner build
 Run the app:
 
 flutter run
-📸 Screenshots
+## 📸 Screenshots
 
-![Home Screen](images/add.png)
-![Home Screen](images/edit.png)
-![Home Screen](images/homePage.png)
+**Add Note Screen**
+![Add Note](images/add.png)
+
+**Edit Note Screen**
+![Edit Note](images/edit.png)
+
+**Home Page**
+![Home Page](images/homePage.png)
+
 
 👤 Author
 
