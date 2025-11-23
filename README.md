@@ -79,14 +79,15 @@ Run the app:
 flutter run
 ## 📸 Screenshots
 
-**Add Note Screen**
-![Add Note](..images/add.png)
+**Add Note Screen**  
+![Add Note](images/add.png)
 
-**Edit Note Screen**
-![Edit Note](..images/edit.png)
+**Edit Note Screen**  
+![Edit Note](images/edit.png)
 
-**Home Page**
-![Home Page](..images/homePage.png)
+**Home Page**  
+![Home Page](images/homePage.png)
+
 
 
 👤 Author
