@@ -81,12 +81,15 @@ flutter run
 
 **Add Note Screen**  
 ![Add Note](images/add.png)
+![Add Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/add.png)
 
 **Edit Note Screen**  
 ![Edit Note](images/edit.png)
+![Add Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/edit.png)
 
 **Home Page**  
 ![Home Page](images/homePage.png)
+![Add Note](https://raw.githubusercontent.com/cyrus4u/note/main/images/homePage.png)
 
 
 
